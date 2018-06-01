@@ -97,3 +97,8 @@ Route::post('transfer', 'TransferController@savenewhouse');
 
 // Report Managment
 Route::any('report', 'ReportController@index');
+
+Route::get('document','DocumentController@index');
+Route::get('document/getdata','DocumentController@anyData')->name('document/getdata');
+Route::post('document','DocumentController@adddocument');
+Route::any('document/delete/','DocumentController@deletedocument');

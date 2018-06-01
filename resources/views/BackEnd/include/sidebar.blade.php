@@ -25,8 +25,10 @@
      <li><a href="report"><i class="icon icon-tint"></i> <span>Report</span></a></li>
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Document Upload</span> </a>
       <ul>
-        <li><a href="">Add Document</a></li>
-        <li><a href="">List Document</a></li>
+<!--        <li><a href="">Add Document</a></li>
+        <li><a href="">List Document</a></li>-->
+        <li><a href="document">Add Document</a></li>
+        <!--<li><a href="document">List Document</a></li>-->
       </ul>
     </li>
     <li class="submenu"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="icon icon-home"></i> <span>Logout</span></a> </li>
