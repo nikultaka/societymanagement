@@ -11,6 +11,10 @@ use Validator;
 use Illuminate\Support\Facades\DB;
 class HouseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $data_result=array();
         $block_list=Block::where('status', '=', 1)->get();

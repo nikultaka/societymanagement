@@ -10,10 +10,16 @@ use Validator;
 use Illuminate\Support\Facades\DB;
 class ReceiptController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
+        $current_month=date('m');
         $data_result=array();
         $block_list=Block::where('status', '=', 1)->get();
         $data_result['block_list']=$block_list;
+        $data_result['current_month']=$current_month;
         $payment_type=DB::table('payment_type')->where('status', '=', 1)->get();
         $data_result['payment_type']=$payment_type;
         return View::make('BackEnd.receipt.receipt_list')->with($data_result);
@@ -79,11 +85,21 @@ class ReceiptController extends Controller
                             ->where('house_block_id','=',$id)
                             ->where('status','=',1)
                             ->get();
-                  
+                    
                     $data= "<select name='house_no' id='house_no' onchange='gethousemember(this.value);'>";
                     $data .= "<option value=''>Select House No</option>";
                     foreach ($house_no as $key=>$value){
-                        $data .="<option value='" . $value->owner_id . "' id='". $value->house_no ."'>" . $value->house_no . "</option>";
+                        $data .="<option value='" . $value->owner_id . "' id='". $value->house_no ."' data-id='".$value->id."'>" . $value->house_no . "</option>";
+                    }
+                    
+                    $data .= "</select>";
+                    $charges_type=DB::table('charges_list')
+                            ->where('block_id','=',$id)
+                            ->where('status','=',1)
+                            ->get();
+                    $data.= "<select name='charges_type' id='charges_type'>";
+                    foreach ($charges_type as $key=>$value){
+                        $data .="<option value='" . $value->id . "' id='". $value->charges_name ."' >" . $value->charges_name . "</option>";
                     }
                     
                     $data .= "</select>";
@@ -109,5 +125,13 @@ class ReceiptController extends Controller
                     $data_result['member_list']=$data;
                  }
                  return json_encode($data_result);
+        }
+        public function add_receipt_single(){
+            if($_POST){
+                $current_month=$_POST['receipt_month'];
+                $timestamp    = strtotime('February 2012');
+                $first_second = date('m-01-Y 00:00:00', $timestamp);
+                $last_second  = date('m-t-Y 12:59:59', $timestamp); // A leap year
+            }
         }
 }

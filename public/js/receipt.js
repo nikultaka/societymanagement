@@ -15,7 +15,7 @@ var table= jQuery('.receipt_list').DataTable({
     });  
 $(document).ready(function() {
            table.ajax.reload();
-           var date = new Date();
+           //var date = new Date();
           
           
 //            $(".add-member").click(function(e){
@@ -96,3 +96,20 @@ function gethouseno(id)
                 });
         
     }
+  $('.add-receipt_single').click(function (e){
+              var house_id = $('#house_no option:selected').data('id');
+              $('#house_managment_id').val(house_id);
+        
+               e.preventDefault();
+               $.ajax({
+                   url:'receipt/add_receipt_single',
+                   type:'post',
+                   data:$('#myForm').serialize(),
+                   success: function (data) {
+                
+            }
+               });
+          });  
+ $(function() {
+   $('#start_date').datetimepicker();
+ });

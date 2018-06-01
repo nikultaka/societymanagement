@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use DB;
 class PaymentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $data_result=array();
         $block_list=Block::where('status', '=', 1)->get();
@@ -19,8 +23,13 @@ class PaymentController extends Controller
         
          
        $data= DB::table('house_managment')
-                ->join('charges_list', 'house_managment.house_block_id', '=', 'charges_list.block_id')
-                ->where('house_managment.status','=','1')
+                /*->join('charges_list', 'house_managment.house_block_id', '=', 'charges_list.block_id')*/
+                ->join('charges_list',function($join)
+                    {
+                        $join->on('house_managment.house_block_id', '=', 'charges_list.block_id');
+                        $join->on('charges_list.status','=',DB::raw(1));
+                    })
+                ->where('house_managment.status','=',1)
                 ->select('house_managment.id', 'charges_list.id as charge_id')
                 ->get();
       $first_day_this_month = date('m-01-Y');

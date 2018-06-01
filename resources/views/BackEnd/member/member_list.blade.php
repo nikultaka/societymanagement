@@ -1,6 +1,6 @@
 @extends('BackEnd.dashboard')
 @section('content')
-<div id="content">
+
   <div id="content-header">
 <!--    <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Tables</a> </div>-->
     <h1>Members List</h1>
@@ -44,6 +44,6 @@
       </div>
     </div>
   </div>
-</div>
+
 @include('BackEnd.member.member_add')
 @stop

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 //Route::get('/login', function () {
 //    return view('BackEnd.login');
@@ -20,9 +20,9 @@ Route::get('/', function () {
 //Route::get('login', array('uses' => 'LoginController@showLogin'));
 //Route::post('login', array('uses' => 'LoginController@doLogin'));
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard','DashboardController@home');
+Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/dashboard','DashboardController@home');
 
 
 
@@ -88,13 +88,12 @@ Route::get('receipt', 'ReceiptController@index');
 Route::get('receipt/getdata', 'ReceiptController@anyData')->name('receipt/getdata');
 Route::any('receipt/getdatafordropdown', 'ReceiptController@getdatafordropdown')->name('receipt/getdatafordropdown');
 Route::any('receipt/getdataforhousemember', 'ReceiptController@getdataforhousemember')->name('receipt/getdataforhousemember');
+Route::any('receipt/add_receipt_single', 'ReceiptController@add_receipt_single');
 
 //trasfer section
 Route::get('transfer', 'TransferController@index');
 Route::post('transfer', 'TransferController@savenewhouse');
 //Route::get('receipt/getdata', 'ReceiptController@anyData')->name('receipt/getdata');
 
-Route::get('document','DocumentController@index');
-Route::get('document/getdata','DocumentController@anyData')->name('document/getdata');
-Route::post('document','DocumentController@adddocument');
-Route::any('document/delete/','DocumentController@deletedocument');
+// Report Managment
+Route::any('report', 'ReportController@index');
