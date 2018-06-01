@@ -58,7 +58,7 @@ $(document).ready(function() {
                 
                 if(count_error == 0){
                 $.ajax({
-                    url: "/charges",
+                    url: "charges",
                     type:'POST',
                     data: {_token:_token, block_id:block_id, txt_charges_name:txt_charges_name, txt_charges_ammount:txt_charges_ammount, description:description},
                     success: function(data) {

@@ -14,7 +14,8 @@
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
             <h5>Payment Detail List Here </h5>
-           
+<!--           <a href="addpaymentreceipt"> <span class="label label-info">Add</span></a>-->
+           <button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#myreceiptautogenrate">Auto Receipt</button>
             <button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#myreceiptModal">Add New Receipt</button>
           </div>
           <div class="widget-content ">
@@ -26,6 +27,7 @@
                   <th>Block No</th>
                   <th>House Number</th>
                   <th>Member Name</th>
+                  <th>Charge Name</th>
                   <th>Charge Month</th>
                   
                  <th>Paid/Unpaid</th>
@@ -47,4 +49,6 @@
   </div>
 
 @include('BackEnd.receipt.receipt_add')
+@include('BackEnd.receipt.receipt_auto')
+@include('BackEnd.receipt.receipt_change_status')
 @stop

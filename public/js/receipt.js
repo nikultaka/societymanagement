@@ -8,6 +8,7 @@ var table= jQuery('.receipt_list').DataTable({
                         { data: 'block', name: 'block'},
                         { data: 'house_no', name: 'house_no'},
                         { data: 'membername', name: 'membername'},
+                        { data: 'charges_name', name: 'charges_name'},
                         { data: 'start_date', name: 'start_date'},
                         { data: 'status', name: 'status'},
                         {data: 'action', name: 'action', orderable: false, searchable: false},
@@ -109,7 +110,50 @@ function gethouseno(id)
                 
             }
                });
-          });  
- $(function() {
-   $('#start_date').datetimepicker();
- });
+          });
+function getchargestype(block_id){
+    if(block_id>0){
+         $.ajax({
+                   url:'receipt/get_charges_type',
+                   type:'get',
+                   data:{block_id:block_id},
+                   success: function (data) {
+                       $('.charges-type-by-block').html(data);
+                       $('.charges-type-by-block').show();
+                    }
+               });
+    }
+    else{
+        return false;
+    }
+}
+$('.apply-charges-by-block').on('click',function (){
+    var block_id=$('#block_list').val();
+    var charge_type=$('#charges_type').val();
+    var error_count=0;
+    if(block_id==0){
+        
+    }
+                $.ajax({
+                   url:'receipt/auto_receipt',
+                   type:'post',
+                   data:$('#myautoreceiptForm').serialize(),
+                   success: function (data) {
+                       alert('Record Add Successfully..!')
+                    }
+               });
+})
+
+ function change_payment_status(id){
+     $('#receipt_id_for_status').val(id);
+     $('#Change_status_popup').modal('show'); 
+     return false;
+    $.ajax({       
+            url:'receipt/get_receiptdetails_id',
+            type:'GET',
+            data:{action:'getdatabyid',receipt_id:id},
+            success: function (data) {
+                //alert('Record Add Successfully..!')
+             }
+        });
+ }

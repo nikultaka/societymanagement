@@ -51,7 +51,7 @@
       <li class="bg_lo"> <a href="#"> <i class="icon-group"></i> Manage Users </a> </li>
       <li class="bg_ls"> <a href="#"> <i class="icon-signal"></i> Check Statistics</a> </li>
     </ul>
-  </div>
+  </div> 
 @yield('content')
 <!--Action boxes-->
   </div>

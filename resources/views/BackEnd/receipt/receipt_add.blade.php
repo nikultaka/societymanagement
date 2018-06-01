@@ -113,4 +113,3 @@
   </div>
 </div>
 </form>
-<script src="{!! asset('js/receipt.js')!!}"></script>
