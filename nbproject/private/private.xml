@@ -3,5 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="htdocs"/>
+        <group>
+            <file>file:/C:/xampp/htdocs/societymanagement/public/js/document.js</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/document/doc_add.blade.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/app/Models/Member.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/app/Models/Payment.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/welcome.blade.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/layouts/app.blade.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/include/sidebar.blade.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/public/js/member.js</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/app/Http/Controllers/MemberController.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/app/Models/Document.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/home.blade.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/document/doc_list.blade.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/app/Models/Block.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/member/member_list.blade.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/app/Http/Controllers/DocumentController.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/routes/web.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/member/member_add.blade.php</file>
+        </group>
     </open-files>
 </project-private>

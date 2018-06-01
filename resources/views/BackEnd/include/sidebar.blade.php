@@ -25,8 +25,8 @@
      <li><a href=""><i class="icon icon-tint"></i> <span>Report</span></a></li>
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Document Upload</span> </a>
       <ul>
-        <li><a href="">Add Document</a></li>
-        <li><a href="">List Document</a></li>
+        <li><a href="document">Add Document</a></li>
+        <!--<li><a href="document">List Document</a></li>-->
       </ul>
     </li>
   </ul>

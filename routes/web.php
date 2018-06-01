@@ -93,3 +93,8 @@ Route::any('receipt/getdataforhousemember', 'ReceiptController@getdataforhouseme
 Route::get('transfer', 'TransferController@index');
 Route::post('transfer', 'TransferController@savenewhouse');
 //Route::get('receipt/getdata', 'ReceiptController@anyData')->name('receipt/getdata');
+
+Route::get('document','DocumentController@index');
+Route::get('document/getdata','DocumentController@anyData')->name('document/getdata');
+Route::post('document','DocumentController@adddocument');
+Route::any('document/delete/','DocumentController@deletedocument');
