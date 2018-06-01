@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use App\Models\Member;
-use App\Models\Receipt;
 use App\Models\Block;
 use Validator;
 use Illuminate\Support\Facades\DB;
@@ -36,8 +35,8 @@ class ReceiptController extends Controller
          
            // $members = Member::select(['id','member_first_name','member_middle_name','member_last_name','member_email','member_contect','status']);
              return Datatables::of($members)->addColumn('action', function ($members) {
-                        $button= '<a href="#edit-'.$members->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> &nbsp;';
-                        $button .='<a href="#delete-'.$members->id.'" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
+                        $button= '<a href="#edit-'.$members->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+                        $button .='<a href="#delete-'.$members->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
                         return $button;
                     })
                     ->editColumn('id', '{{$id}}')
@@ -128,29 +127,11 @@ class ReceiptController extends Controller
                  return json_encode($data_result);
         }
         public function add_receipt_single(){
-
             if($_POST){
                 $current_month=$_POST['receipt_month'];
-                
-                $house_management_id = $_POST['house_managment_id'];  
-                $charges_id = $_POST['charges_type'];
-                $first_second = date('01-'.$current_month.'-Y');
-                $last_second  = date('t-'.$current_month.'-Y'); // A leap year
-                $payment_type = $_POST['payment_type'];  
-                
-                
-                $data_insert = array();
-                $data_insert['house_managment_id']=$house_management_id;
-                $data_insert['charges_id']=$charges_id;
-                $data_insert['start_date']=$first_second;
-                $data_insert['end_date']=$last_second;
-                $data_insert['payment_type']=$payment_type;
-                $data_insert['status']=1;
-                
-                Receipt::insert($data_insert);
-
-                return response()->json(['success'=>'Added new records.']);
-                }
-            return response()->json(['error'=>$validator->errors()->all()]);  
+                $timestamp    = strtotime('February 2012');
+                $first_second = date('m-01-Y 00:00:00', $timestamp);
+                $last_second  = date('m-t-Y 12:59:59', $timestamp); // A leap year
             }
+        }
 }
