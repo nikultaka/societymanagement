@@ -32,7 +32,7 @@ $(document).ready(function() {
               
                
                 $.ajax({
-                    url: "/transfer",
+                    url: "transfer",
                     type:'POST',
                     data: {_token:_token, block_id:block_id, house_no:house_no, old_owner_id:old_owner_id, new_member_id:new_member_id},
                     success: function(data) {

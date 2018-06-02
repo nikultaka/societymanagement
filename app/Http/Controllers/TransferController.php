@@ -84,6 +84,20 @@ class TransferController extends Controller
             ->where('owner_id', $old_owner_id) 
             ->update(['status' => 2]);
            // DB::table('house_managment')
+            $new_owner_data=array();
+            $new_owner_data['house_block_id']=$block_id;
+            $new_owner_data['house_no']=$house_no;
+            $new_owner_data['owner_id']=$new_member_id;
+            $new_owner_data['rental_id']=0;
+            $new_owner_data['status']=1;
+            DB::table('house_managment')->insert($new_owner_data);
             
+            $notes_data=array();
+            $notes_data['title']='House Owner Change';
+            $notes_data['description']='House Owner Change old owner id is ='.$old_owner_id.'new owner id is = '.$new_member_id;
+            $notes_data['type']='trasfer';
+            $notes_data['house_no']=$house_no;
+            $notes_data['status']=1;
+            DB::table('notes')->insert($notes_data);
         }
 }

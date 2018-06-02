@@ -70,7 +70,7 @@ $(document).ready(function() {
                 if(count_error == 0){
                     
                     $.ajax({
-                    url: "/member",
+                    url: "member",
                     type:'POST',
                     data: {_token:_token, txt_fname:txt_fname, txt_mname:txt_mname, txt_lname:txt_lname, email:email, number:number},
                     success: function(data) {
