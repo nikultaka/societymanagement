@@ -96,7 +96,7 @@ $(document).ready(function() {
                 
                
                 $.ajax({
-                    url: "/expense",
+                    url: "expense",
                     type:'POST',
                     data: {_token:_token, block_id:block_id, expense_type_id:expense_type_id, payment_type_id:payment_type_id, txt_vname:txt_vname, txt_amount:txt_amount, txt_payment_date:txt_payment_date,txt_description:txt_description},
                     success: function(data) {
@@ -240,7 +240,7 @@ function delete_expense(id){
     if (confirm('Are You Sure For Delete The House..!! ')) {
         var _token = $("input[name='_token']").val();
              $.ajax({
-                    url: "/expense/delete",
+                    url: "expense/delete",
                     type:'POST',
                     data: {_token:_token, id:id},
                     success: function(data) {
@@ -260,7 +260,7 @@ function  refreshJsexpense(){
         var expense_id = $(this).data('id'); 
         var _token = $("input[name='_token']").val();
         $.ajax({
-            url: "/expense/edit",
+            url: "expense/edit",
             type:'POST',
             data: {_token:_token, expense_id:expense_id},
             success: function(data) {

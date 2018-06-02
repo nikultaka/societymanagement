@@ -27,7 +27,7 @@ $(document).ready(function() {
                 }
                 else{
                 $.ajax({
-                    url: "/block",
+                    url: "block",
                     type:'POST',
                     data: {_token:_token, txt_block_name:txt_block_name},
                     success: function(data) {
@@ -54,7 +54,7 @@ $(document).ready(function() {
         }
         else{
         $.ajax({
-            url: "/block/update",
+            url: "block/update",
             type:'POST',
             data: {_token:_token, txt_block_name:txt_block_name,block_id:block_id},
             success: function(data) {
@@ -77,7 +77,7 @@ function refreshJs()
         var block_id = $(this).data('id'); 
         var _token = $("input[name='_token']").val();
         $.ajax({
-            url: "/block/edit",
+            url: "block/edit",
             type:'POST',
             data: {_token:_token, block_id:block_id},
             success: function(data) {
@@ -117,7 +117,7 @@ function delete_block(id){
     if (confirm('Are You Sure For Delete The Block..!! ')) {
         var _token = $("input[name='_token']").val();
              $.ajax({
-                    url: "/block/delete",
+                    url: "block/delete",
                     type:'POST',
                     data: {_token:_token, id:id},
                     success: function(data) {

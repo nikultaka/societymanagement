@@ -67,7 +67,7 @@ $(document).ready(function() {
               if(count_error == 0){
                   
                 $.ajax({
-                    url: "/house",
+                    url: "house",
                     type:'POST',
                     data: {_token:_token, block_id:block_id, txt_house_no:txt_house_no, owner_id:owner_id, rental_id:rental_id},
                     success: function(data) {
@@ -122,7 +122,7 @@ $(document).ready(function() {
               if(count_error == 0){
                   
                 $.ajax({
-                    url: "/house/update",
+                    url: "house/update",
                     type:'POST',
                     data: {_token:_token,house_id:house_id, block_id:block_id, txt_house_no:txt_house_no, owner_id:owner_id, rental_id:rental_id},
                     success: function(data) {
@@ -159,7 +159,7 @@ function refreshJshouse(){
         var house_id = $(this).data('id'); 
         var _token = $("input[name='_token']").val();
         $.ajax({
-            url: "/house/edit",
+            url: "house/edit",
             type:'POST',
             data: {_token:_token, house_id:house_id},
             success: function(data) {
@@ -186,7 +186,7 @@ function delete_house(id){
     if (confirm('Are You Sure For Delete The House..!! ')) {
         var _token = $("input[name='_token']").val();
              $.ajax({
-                    url: "/house/delete",
+                    url: "house/delete",
                     type:'POST',
                     data: {_token:_token, id:id},
                     success: function(data) {

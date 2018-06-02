@@ -139,7 +139,7 @@ function refreshJscharges(){
         var charges_id = $(this).data('id'); 
         var _token = $("input[name='_token']").val();
         $.ajax({
-            url: "/charges/edit",
+            url: "charges/edit",
             type:'POST',
             data: {_token:_token, charges_id:charges_id},
             success: function(data) {
@@ -170,7 +170,7 @@ function delete_charges(id){
     if (confirm('Are You Sure For Delete The House..!! ')) {
         var _token = $("input[name='_token']").val();
              $.ajax({
-                    url: "/charges/delete",
+                    url: "charges/delete",
                     type:'POST',
                     data: {_token:_token, id:id},
                     success: function(data) {
