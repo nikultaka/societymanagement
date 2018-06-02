@@ -209,6 +209,8 @@ class ReceiptController extends Controller
        }
     }
     public function get_receiptdetails_id(){
+        $data_result=array();
+        $data_result['status']=0;
         if($_GET['action']=='getdatabyid'){
               $receipt_id=$_GET['receipt_id'];
           $members=DB::table('house_receipts')
@@ -217,12 +219,51 @@ class ReceiptController extends Controller
                     ->join('charges_list', 'block.id', '=', 'charges_list.block_id')
                     ->join('member_list', 'house_managment.owner_id', '=', 'member_list.id')
                     ->where('house_receipts.id','=',$receipt_id)
-                    ->select('charges_list.charges_name','house_receipts.id','house_receipts.status','house_receipts.start_date', 'house_managment.house_no','block.block_name as block',DB::raw('CONCAT(member_list.member_first_name," ",member_list.member_middle_name," ",member_list.member_last_name) as membername'))
-                    ->get();
-              echo '<pre>';
-              print_r($members);
-              die;
+                    ->select('charges_list.charges_name','charges_list.charges_ammount','house_receipts.id','house_receipts.status','house_receipts.start_date', 'house_managment.house_no','block.block_name as block',DB::raw('CONCAT(member_list.member_first_name," ",member_list.member_middle_name," ",member_list.member_last_name) as membername'))
+                    ->first();
+          if($members){
+             $data_result['status']=1;
+             $data_result['result']=$members;
           }
           
+        }
+        return json_encode($data_result);
+          
+    }
+    public function payment_status_change(){
+        $data_result=array();
+        $data_result['status']=0;
+        $data_result['msg']='Please Try Agen..!!';
+        if($_POST){
+            $data_update=array();
+            $receipt_id=$_POST['receipt_id_for_status'];
+            $payment_type=$_POST['payment_type'];
+            $data_update['payment_type']=$_POST['payment_type'];
+            $data_update['status']=1;
+            $data_update['cheque_number']='';
+            $data_update['bank_name']='';
+            $data_update['bank_ifsc']='';
+            if(isset($payment_type) && $payment_type==1){
+               DB::table('house_receipts')
+                    ->where('id', $receipt_id)
+                    ->update($data_update);
+            }
+            elseif (isset($payment_type) && $payment_type==2) {
+             $data_update['status']=1;
+            $data_update['cheque_number']=$_POST['chq_no'];
+            $data_update['bank_name']=$_POST['bank_name'];
+            $data_update['bank_ifsc']=$_POST['bank_ifsc_code'];
+                DB::table('house_receipts')
+                    ->where('id', $receipt_id)
+                    ->update($data_update);
+            
+                 $data_result['status']=1;
+             $data_result['msg']='Payment Status Updated..!';
+            }
+            else {
+
+            }
+        }
+        return json_encode($data_result);
     }
 }

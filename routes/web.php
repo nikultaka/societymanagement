@@ -92,6 +92,7 @@ Route::any('receipt/add_receipt_single', 'ReceiptController@add_receipt_single')
 Route::any('receipt/get_charges_type','ReceiptController@get_charges_type')->name('receipt/get_charges_type');
 Route::any('receipt/auto_receipt','ReceiptController@auto_receipt');
 Route::any('receipt/get_receiptdetails_id','ReceiptController@get_receiptdetails_id');
+Route::any('receipt/payment_status_change','ReceiptController@payment_status_change');
 
 //trasfer section
 Route::get('transfer', 'TransferController@index');
