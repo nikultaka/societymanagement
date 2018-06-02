@@ -2,7 +2,7 @@ var table= jQuery('.charges-table').DataTable({
                     responsive: true,
                     processing: true,
                     serverSide: true,
-                    ajax: 'charges/getdata',
+                    ajax: $('#base_url').val()+'charges/getdata',
                     columns: [
                         { data: 'id', name: 'id'},
                         { data: 'block_name', name: 'block_name'},
@@ -58,7 +58,7 @@ $(document).ready(function() {
                 
                 if(count_error == 0){
                 $.ajax({
-                    url: "charges",
+                    url: $('#base_url').val()+"charges",
                     type:'POST',
                     data: {_token:_token, block_id:block_id, txt_charges_name:txt_charges_name, txt_charges_ammount:txt_charges_ammount, description:description},
                     success: function(data) {
@@ -115,7 +115,7 @@ $(document).ready(function() {
                 
                 if(count_error == 0){
                 $.ajax({
-                    url: "charges/update",
+                    url: $('#base_url').val()+"charges/update",
                     type:'POST',
                     data: {_token:_token,charges_id:charges_id, block_id:block_id, txt_charges_name:txt_charges_name, txt_charges_ammount:txt_charges_ammount, description:description},
                     success: function(data) {
@@ -139,7 +139,7 @@ function refreshJscharges(){
         var charges_id = $(this).data('id'); 
         var _token = $("input[name='_token']").val();
         $.ajax({
-            url: "charges/edit",
+            url: $('#base_url').val()+"charges/edit",
             type:'POST',
             data: {_token:_token, charges_id:charges_id},
             success: function(data) {
@@ -170,7 +170,7 @@ function delete_charges(id){
     if (confirm('Are You Sure For Delete The House..!! ')) {
         var _token = $("input[name='_token']").val();
              $.ajax({
-                    url: "charges/delete",
+                    url: $('#base_url').val()+"charges/delete",
                     type:'POST',
                     data: {_token:_token, id:id},
                     success: function(data) {

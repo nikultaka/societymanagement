@@ -1,8 +1,8 @@
-var table= jQuery('.block-table').DataTable({
+var table=  jQuery('.block-table').DataTable({
                     responsive: true,
                     processing: true,
                     serverSide: true,
-                    ajax: 'block/getdata',
+                    ajax: $('#base_url').val()+'block/getdata',
                     columns: [
                         { data: 'id', name: 'id',"width": "10%" },
                         { data: 'block_name', name: 'block_name',"width": "60%" },
@@ -17,6 +17,8 @@ $(document).ready(function() {
     
            table.ajax.reload();
             $(".add-block").click(function(e){
+                var base_url=$('#base_url').val();
+                
                 e.preventDefault();
                 var _token = $("input[name='_token']").val();
                 var txt_block_name = $("input[name='txt_block_name']").val();
@@ -27,7 +29,7 @@ $(document).ready(function() {
                 }
                 else{
                 $.ajax({
-                    url: "block",
+                    url: base_url+"block",
                     type:'POST',
                     data: {_token:_token, txt_block_name:txt_block_name},
                     success: function(data) {
@@ -43,6 +45,7 @@ $(document).ready(function() {
             }
             });
             $(".Update-block").click(function(e){
+                var base_url=$('#base_url').val();
         e.preventDefault();
         var _token = $("input[name='_token']").val();
         var txt_block_name = $("input[name='txt_block_name']").val();
@@ -54,7 +57,7 @@ $(document).ready(function() {
         }
         else{
         $.ajax({
-            url: "block/update",
+            url: base_url+"block/update",
             type:'POST',
             data: {_token:_token, txt_block_name:txt_block_name,block_id:block_id},
             success: function(data) {
@@ -74,10 +77,11 @@ $(document).ready(function() {
 function refreshJs()
 {
     $('.btnEditBlock').on('click', function () {
+        var base_url=$('#base_url').val();
         var block_id = $(this).data('id'); 
         var _token = $("input[name='_token']").val();
         $.ajax({
-            url: "block/edit",
+            url: base_url+"block/edit",
             type:'POST',
             data: {_token:_token, block_id:block_id},
             success: function(data) {
@@ -114,10 +118,11 @@ function Singleerror (msg) {
     $(".print-error-msg").find("ul").append('<li>'+msg+'</li>');
 }
 function delete_block(id){
+    var base_url=$('#base_url').val();
     if (confirm('Are You Sure For Delete The Block..!! ')) {
         var _token = $("input[name='_token']").val();
              $.ajax({
-                    url: "block/delete",
+                    url: base_url+"block/delete",
                     type:'POST',
                     data: {_token:_token, id:id},
                     success: function(data) {

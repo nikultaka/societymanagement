@@ -2,7 +2,7 @@ var table= jQuery('.receipt_list').DataTable({
                     responsive: true,
                     processing: true,
                     serverSide: true,
-                    ajax: 'receipt/getdata',
+                    ajax: $('#base_url').val()+'receipt/getdata',
                     columns: [
                         { data: 'id', name: 'id'},
                         { data: 'block', name: 'block'},
@@ -32,7 +32,7 @@ $(document).ready(function() {
               
                
                 $.ajax({
-                    url: "transfer",
+                    url: $('#base_url').val()+"transfer",
                     type:'POST',
                     data: {_token:_token, block_id:block_id, house_no:house_no, old_owner_id:old_owner_id, new_member_id:new_member_id},
                     success: function(data) {
@@ -68,7 +68,7 @@ function gethouseno(id)
     {
         $.ajax({
                 type: "GET",
-                url: "receipt/getdatafordropdown",
+                url: $('#base_url').val()+"receipt/getdatafordropdown",
                 data:{id:id},
                 success: function(result){
                      $("#hosue_no").html(result);
@@ -79,7 +79,7 @@ function gethouseno(id)
        
          $.ajax({
                 type: "GET",
-                url: "receipt/getdataforhousemember",
+                url: $('#base_url').val()+"receipt/getdataforhousemember",
                 data:{owner_id:owner_id},
                 success: function(result){
                      var data=jQuery.parseJSON(result);

@@ -2,7 +2,7 @@ var table= jQuery('.receipt_list').DataTable({
                     responsive: true,
                     processing: true,
                     serverSide: true,
-                    ajax: 'receipt/getdata',
+                    ajax: $('#base_url').val()+'receipt/getdata',
                     columns: [
                         { data: 'id', name: 'id'},
                         { data: 'block', name: 'block'},
@@ -19,7 +19,7 @@ $(document).ready(function() {
            $('.payment-status-change').on('click',function (){
     
      $.ajax({       
-            url:'receipt/payment_status_change',
+            url:$('#base_url').val()+'receipt/payment_status_change',
             type:'POST',
             datatype:'JSON',
             data:$('#payment_submitForm').serialize(),
@@ -91,7 +91,7 @@ function gethouseno(id)
     {
         $.ajax({
                 type: "GET",
-                url: "receipt/getdatafordropdown",
+                url: $('#base_url').val()+"receipt/getdatafordropdown",
                 data:{id:id},
                 success: function(result){
                      $("#hosue_no").html(result);
@@ -101,7 +101,7 @@ function gethouseno(id)
     function gethousemember(owner_id){
          $.ajax({
                 type: "GET",
-                url: "receipt/getdataforhousemember",
+                url: $('#base_url').val()+"receipt/getdataforhousemember",
                 data:{owner_id:owner_id},
                 success: function(result){
                      var data=jQuery.parseJSON(result);
@@ -122,7 +122,7 @@ function gethouseno(id)
         
                e.preventDefault();
                $.ajax({
-                   url:'receipt/add_receipt_single',
+                   url:$('#base_url').val()+'receipt/add_receipt_single',
                    type:'post',
                    data:$('#myForm').serialize(),
                    success: function (data) {
@@ -133,7 +133,7 @@ function gethouseno(id)
 function getchargestype(block_id){
     if(block_id>0){
          $.ajax({
-                   url:'receipt/get_charges_type',
+                   url:$('#base_url').val()+'receipt/get_charges_type',
                    type:'get',
                    data:{block_id:block_id},
                    success: function (data) {
@@ -154,7 +154,7 @@ $('.apply-charges-by-block').on('click',function (){
         
     }
                 $.ajax({
-                   url:'receipt/auto_receipt',
+                   url:$('#base_url').val()+'receipt/auto_receipt',
                    type:'post',
                    data:$('#myautoreceiptForm').serialize(),
                    success: function (data) {
@@ -166,7 +166,7 @@ $('.apply-charges-by-block').on('click',function (){
  function change_payment_status(id){
      
     $.ajax({       
-            url:'receipt/get_receiptdetails_id',
+            url:$('#base_url').val()+'receipt/get_receiptdetails_id',
             type:'GET',
             datatype:'JSON',
             data:{action:'getdatabyid',receipt_id:id},

@@ -15,7 +15,7 @@ var table= jQuery('.house-table').DataTable({
                     responsive: true,
                     processing: true,
                     serverSide: true,
-                    ajax: 'house/getdata',
+                    ajax: $('#base_url').val()+'house/getdata',
                     columns: [
                         { data: 'id', name: 'id'},
                         { data: 'block_name', name: 'block_name'},
@@ -67,7 +67,7 @@ $(document).ready(function() {
               if(count_error == 0){
                   
                 $.ajax({
-                    url: "house",
+                    url: $('#base_url').val()+"house",
                     type:'POST',
                     data: {_token:_token, block_id:block_id, txt_house_no:txt_house_no, owner_id:owner_id, rental_id:rental_id},
                     success: function(data) {
@@ -122,7 +122,7 @@ $(document).ready(function() {
               if(count_error == 0){
                   
                 $.ajax({
-                    url: "house/update",
+                    url: $('#base_url').val()+"house/update",
                     type:'POST',
                     data: {_token:_token,house_id:house_id, block_id:block_id, txt_house_no:txt_house_no, owner_id:owner_id, rental_id:rental_id},
                     success: function(data) {
@@ -159,7 +159,7 @@ function refreshJshouse(){
         var house_id = $(this).data('id'); 
         var _token = $("input[name='_token']").val();
         $.ajax({
-            url: "house/edit",
+            url: $('#base_url').val()+"house/edit",
             type:'POST',
             data: {_token:_token, house_id:house_id},
             success: function(data) {
@@ -186,7 +186,7 @@ function delete_house(id){
     if (confirm('Are You Sure For Delete The House..!! ')) {
         var _token = $("input[name='_token']").val();
              $.ajax({
-                    url: "house/delete",
+                    url: $('#base_url').val()+"house/delete",
                     type:'POST',
                     data: {_token:_token, id:id},
                     success: function(data) {

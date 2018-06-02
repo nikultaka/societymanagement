@@ -27,6 +27,7 @@
                                                      document.getElementById('logout-form').submit();"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
+<input type="hidden" name="base_url" id="base_url" value="{!!url('/')!!}/">
 <!--close-top-Header-menu-->
 <!--start-top-serch-->
 <!--<div id="search">

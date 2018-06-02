@@ -2,7 +2,7 @@ var table= jQuery('.expenses-table').DataTable({
                     responsive: true,
                     processing: true,
                     serverSide: true,
-                    ajax: 'expense/getdata',
+                    ajax: $('#base_url').val()+'expense/getdata',
                     columns: [
                         { data: 'id', name: 'id'},
                         { data: 'expense_name', name: 'expense_name'},
@@ -96,7 +96,7 @@ $(document).ready(function() {
                 
                
                 $.ajax({
-                    url: "expense",
+                    url: $('#base_url').val()+"expense",
                     type:'POST',
                     data: {_token:_token, block_id:block_id, expense_type_id:expense_type_id, payment_type_id:payment_type_id, txt_vname:txt_vname, txt_amount:txt_amount, txt_payment_date:txt_payment_date,txt_description:txt_description},
                     success: function(data) {
@@ -128,7 +128,7 @@ $(document).ready(function() {
                 }
                if(count_error == 0){
                 $.ajax({
-                    url: "/expensestype",
+                    url: $('#base_url').val()+"expensestype",
                     type:'POST',
                     data: {_token:_token, txt_expense_name:txt_expense_name},
                     success: function(data) {
@@ -216,7 +216,7 @@ $(document).ready(function() {
                 
                
                 $.ajax({
-                    url: "expense/update",
+                    url: $('#base_url').val()+"expense/update",
                     type:'POST',
                     data: {_token:_token,expenses_id:expenses_id, block_id:block_id, expense_type_id:expense_type_id, payment_type_id:payment_type_id, txt_vname:txt_vname, txt_amount:txt_amount, txt_payment_date:txt_payment_date,txt_description:txt_description},
                     success: function(data) {
@@ -240,7 +240,7 @@ function delete_expense(id){
     if (confirm('Are You Sure For Delete The House..!! ')) {
         var _token = $("input[name='_token']").val();
              $.ajax({
-                    url: "expense/delete",
+                    url: $('#base_url').val()+"expense/delete",
                     type:'POST',
                     data: {_token:_token, id:id},
                     success: function(data) {
@@ -260,7 +260,7 @@ function  refreshJsexpense(){
         var expense_id = $(this).data('id'); 
         var _token = $("input[name='_token']").val();
         $.ajax({
-            url: "expense/edit",
+            url: $('#base_url').val()+"expense/edit",
             type:'POST',
             data: {_token:_token, expense_id:expense_id},
             success: function(data) {

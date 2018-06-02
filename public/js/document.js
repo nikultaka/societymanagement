@@ -2,7 +2,7 @@ var table= jQuery('.doc-table').DataTable({
                     responsive: true,
                     processing: true,
                     serverSide: true,
-                    ajax: 'document/getdata',
+                    ajax: $('#base_url').val()+'document/getdata',
                     columns: [
                         { data: 'id', name: 'id'},
                         { data: 'title', name: 'title'},
@@ -49,7 +49,7 @@ $(document).ready(function() {
                     
                    var formData = new FormData($('#myDocm')[0]);
                     $.ajax({
-                    url: "document",
+                    url: $('#base_url').val()+"document",
                     type:'POST',
                     data:formData,
                     contentType: false,
@@ -92,7 +92,7 @@ function delete_document(id){
     if (confirm('Are You Sure For Delete The Document..!! ')) {
         var _token = $("input[name='_token']").val();
              $.ajax({
-                    url: "document/delete",
+                    url: $('#base_url').val()+"document/delete",
                     type:'POST',
                     data: {_token:_token, id:id},
                     success: function(data) {
