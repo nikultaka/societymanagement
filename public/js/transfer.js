@@ -1,16 +1,17 @@
-var table= jQuery('.receipt_list').DataTable({
+var table= jQuery('.trasfer-member-list').DataTable({
+                     order: [ [0, 'desc'] ],
                     responsive: true,
                     processing: true,
                     serverSide: true,
-                    ajax: $('#base_url').val()+'receipt/getdata',
+                    ajax: $('#base_url').val()+'transfer/getdata',
                     columns: [
                         { data: 'id', name: 'id'},
-                        { data: 'block', name: 'block'},
+                        { data: 'block_name', name: 'block_name'},
                         { data: 'house_no', name: 'house_no'},
-                        { data: 'membername', name: 'membername'},
-                        { data: 'start_date', name: 'start_date'},
-                        { data: 'status', name: 'status'},
-                        {data: 'action', name: 'action', orderable: false, searchable: false},
+                        { data: 'oldname', name: 'oldname'},
+                        { data: 'newmembername', name: 'newmembername'},
+                        { data: 'gm_created', name: 'gm_created'},
+//                        {data: 'action', name: 'action', orderable: false, searchable: false},
                             ]
     });  
 $(document).ready(function() {

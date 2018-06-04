@@ -24,17 +24,29 @@ class TransferController extends Controller
     }
       public function anyData()
         {
-          $members=DB::table('member_list')
-                    ->join('block', 'member_list.member_block_id', '=', 'block.id')
-                    ->select('member_list.*', 'block.block_name')
-                    ->get();
-          
+          $members=DB::table('trasfer_history')
+                            ->join('member_list as member', function ($join) {
+                                $join->on('member.id', '=', 'trasfer_history.old_member_id');
+                            })
+                            ->join('member_list as newmember', function ($join) {
+                                $join->on('newmember.id', '=', 'trasfer_history.new_member_id');
+                            })
+                            ->join('block','block.id','=','trasfer_history.block_id')
+                            ->select('trasfer_history.id','trasfer_history.house_no','trasfer_history.gm_created','block.block_name',DB::raw('CONCAT(member.member_first_name," ",member.member_middle_name," ",member.member_last_name) as oldname'),DB::raw('CONCAT(newmember.member_first_name," ",newmember.member_middle_name," ",newmember.member_last_name) as newmembername'))
+                            ->get();
+         
+//          $members=DB::table('member_list')
+//                    ->join('block', 'member_list.member_block_id', '=', 'block.id')
+//                    ->select('member_list.*', 'block.block_name')
+//                    ->get();
+//          
            // $members = Member::select(['id','member_first_name','member_middle_name','member_last_name','member_email','member_contect','status']);
-             return Datatables::of($members)->addColumn('action', function ($members) {
-                        $button= '<a href="#edit-'.$members->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
-                        $button .='<a href="#delete-'.$members->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
-                        return $button;
-                    })
+             return Datatables::of($members)
+//                     ->addColumn('action', function ($members) {
+//                        $button= '<a href="#edit-'.$members->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+//                        $button .='<a href="#delete-'.$members->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
+//                        return $button;
+//                    })
                     ->editColumn('id', '{{$id}}')
                     ->make(true);
         }
@@ -92,6 +104,13 @@ class TransferController extends Controller
             $new_owner_data['status']=1;
             DB::table('house_managment')->insert($new_owner_data);
             
+            $trasfer_history=array();
+            $trasfer_history['block_id']=$block_id;
+            $trasfer_history['house_no']=$house_no;
+            $trasfer_history['old_member_id']=$old_owner_id;
+            $trasfer_history['new_member_id']=$new_member_id;
+            
+            DB::table('trasfer_history')->insert($trasfer_history);
             $notes_data=array();
             $notes_data['title']='House Owner Change';
             $notes_data['description']='House Owner Change old owner id is ='.$old_owner_id.'new owner id is = '.$new_member_id;

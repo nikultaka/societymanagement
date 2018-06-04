@@ -17,18 +17,18 @@
             <button type="button" class="btn btn-info btn-lg pull-right" data-toggle="modal" data-target="#mytrasferModal">Add Trasfer</button>
           </div>
           <div class="widget-content ">
-            <table class="table table-bordered table-striped with-check">
+            <table class="table table-bordered table-striped with-check trasfer-member-list">
               <thead>
                 <tr>
                   
                   <th>Id</th>
-                  <th>Title</th>
-                  <th>Member Name</th>
-                  <th>paid Amount</th>
-                  <th>Remaining Amount</th>
-                 <th>Paid/Unpaid</th>
+                  <th>Block Name</th>
+                  <th>House Name</th>
+                  <th>Old Member Name</th>
+                  <th>New Member Name</th>
+                 <th>Update Date</th>
                  
-                 <th>Action</th>
+<!--                 <th>Action</th>-->
                  
                 </tr>
               </thead>

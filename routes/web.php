@@ -97,7 +97,7 @@ Route::any('receipt/payment_status_change','ReceiptController@payment_status_cha
 //trasfer section
 Route::get('transfer', 'TransferController@index');
 Route::post('transfer', 'TransferController@savenewhouse');
-//Route::get('receipt/getdata', 'ReceiptController@anyData')->name('receipt/getdata');
+Route::get('transfer/getdata', 'TransferController@anyData');
 
 // Report Managment
 Route::any('report', 'ReportController@index');
