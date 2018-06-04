@@ -266,4 +266,10 @@ class ReceiptController extends Controller
         }
         return json_encode($data_result);
     }
+    public function search_record(){
+        $data_result=array();
+        $block_list=Block::where('status', '=', 1)->get();
+        $data_result['block_list']=$block_list;
+        return View::make('BackEnd.search.index')->with($data_result);
+    }
 }

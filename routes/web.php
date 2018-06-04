@@ -106,3 +106,10 @@ Route::get('document','DocumentController@index');
 Route::get('document/getdata','DocumentController@anyData')->name('document/getdata');
 Route::post('document','DocumentController@adddocument');
 Route::any('document/delete/','DocumentController@deletedocument');
+
+
+//search Record
+Route::get('search_record','SearchController@index');
+Route::get('search/getdatafordropdown','SearchController@getdatafordropdown');
+Route::post('search/search_record','SearchController@search_record');
+
