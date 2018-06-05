@@ -89,11 +89,15 @@ Route::get('receipt/getdata', 'ReceiptController@anyData')->name('receipt/getdat
 Route::any('receipt/getdatafordropdown', 'ReceiptController@getdatafordropdown')->name('receipt/getdatafordropdown');
 Route::any('receipt/getdataforhousemember', 'ReceiptController@getdataforhousemember')->name('receipt/getdataforhousemember');
 Route::any('receipt/add_receipt_single', 'ReceiptController@add_receipt_single');
+Route::any('receipt/get_charges_type','ReceiptController@get_charges_type')->name('receipt/get_charges_type');
+Route::any('receipt/auto_receipt','ReceiptController@auto_receipt');
+Route::any('receipt/get_receiptdetails_id','ReceiptController@get_receiptdetails_id');
+Route::any('receipt/payment_status_change','ReceiptController@payment_status_change');
 
 //trasfer section
 Route::get('transfer', 'TransferController@index');
 Route::post('transfer', 'TransferController@savenewhouse');
-//Route::get('receipt/getdata', 'ReceiptController@anyData')->name('receipt/getdata');
+Route::get('transfer/getdata', 'TransferController@anyData');
 
 
 Route::get('document','DocumentController@index');
@@ -101,6 +105,14 @@ Route::get('document/getdata','DocumentController@anyData')->name('document/getd
 Route::post('document','DocumentController@adddocument');
 Route::any('document/delete/','DocumentController@deletedocument');
 
+
 // Report Managment
 Route::any('report','ReportController@index');
 Route::any('report/getdata','ReportController@anyData')->name('report/getdata');
+
+//search Record
+Route::get('search_record','SearchController@index');
+Route::get('search/getdatafordropdown','SearchController@getdatafordropdown');
+Route::post('search/search_record','SearchController@search_record');
+
+
