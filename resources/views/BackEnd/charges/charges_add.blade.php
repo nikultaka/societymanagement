@@ -25,7 +25,7 @@
               <div class="control-group">
               <label class="control-label">Select Block/wing</label>
               <div class="controls">
-                <select name="block_list" class="selectpicker"  data-live-search="true" id="block_list">
+                <select name="block_list" id="block_list">
                         <option value="0">---Select Expense Block---</option>
                          @if($block_list->count() > 0)
                         @foreach($block_list as $block)

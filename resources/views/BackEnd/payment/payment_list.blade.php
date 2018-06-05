@@ -14,7 +14,7 @@
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
             <h5>Payment Detail List Here </h5>
-            <a href="addpaymentreceipt"> <span class="label label-info">Add</span></a>
+            
             <a href="addpayment"> <span class="label label-info">Add Payment</span></a> </div>
           <div class="widget-content ">
             <table class="table table-bordered table-striped with-check">

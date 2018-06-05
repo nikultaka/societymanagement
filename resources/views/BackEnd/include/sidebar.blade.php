@@ -23,6 +23,7 @@
     </li>
     <li><a href="transfer"><i class="icon icon-tint"></i> <span>Transfer Member</span></a></li>
      <li><a href="report"><i class="icon icon-tint"></i> <span>Report</span></a></li>
+     <li><a href="search_record"><i class="icon icon-tint"></i> <span>Receipt Check</span></a></li>
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Document Upload</span> </a>
       <ul>
         <li><a href="document">Add Document</a></li>

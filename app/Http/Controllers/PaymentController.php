@@ -22,7 +22,7 @@ class PaymentController extends Controller
     public function addpaymentreceipt(){
         
          
-       $data= DB::table('house_managment')
+      $data= DB::table('house_managment')
                 /*->join('charges_list', 'house_managment.house_block_id', '=', 'charges_list.block_id')*/
                 ->join('charges_list',function($join)
                     {

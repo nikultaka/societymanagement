@@ -27,6 +27,7 @@
                                                      document.getElementById('logout-form').submit();"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
   </ul>
 </div>
+<input type="hidden" name="base_url" id="base_url" value="{!!url('/')!!}/">
 <!--close-top-Header-menu-->
 <!--start-top-serch-->
 <!--<div id="search">
@@ -51,7 +52,7 @@
       <li class="bg_lo"> <a href="#"> <i class="icon-group"></i> Manage Users </a> </li>
       <li class="bg_ls"> <a href="#"> <i class="icon-signal"></i> Check Statistics</a> </li>
     </ul>
-  </div>
+  </div> 
 @yield('content')
 <!--Action boxes-->
   </div>

@@ -1,16 +1,17 @@
-var table= jQuery('.receipt_list').DataTable({
+var table= jQuery('.trasfer-member-list').DataTable({
+                     order: [ [0, 'desc'] ],
                     responsive: true,
                     processing: true,
                     serverSide: true,
-                    ajax: 'receipt/getdata',
+                    ajax: $('#base_url').val()+'transfer/getdata',
                     columns: [
                         { data: 'id', name: 'id'},
-                        { data: 'block', name: 'block'},
+                        { data: 'block_name', name: 'block_name'},
                         { data: 'house_no', name: 'house_no'},
-                        { data: 'membername', name: 'membername'},
-                        { data: 'start_date', name: 'start_date'},
-                        { data: 'status', name: 'status'},
-                        {data: 'action', name: 'action', orderable: false, searchable: false},
+                        { data: 'oldname', name: 'oldname'},
+                        { data: 'newmembername', name: 'newmembername'},
+                        { data: 'gm_created', name: 'gm_created'},
+//                        {data: 'action', name: 'action', orderable: false, searchable: false},
                             ]
     });  
 $(document).ready(function() {
@@ -32,7 +33,7 @@ $(document).ready(function() {
               
                
                 $.ajax({
-                    url: "/transfer",
+                    url: $('#base_url').val()+"transfer",
                     type:'POST',
                     data: {_token:_token, block_id:block_id, house_no:house_no, old_owner_id:old_owner_id, new_member_id:new_member_id},
                     success: function(data) {
@@ -68,7 +69,7 @@ function gethouseno(id)
     {
         $.ajax({
                 type: "GET",
-                url: "receipt/getdatafordropdown",
+                url: $('#base_url').val()+"receipt/getdatafordropdown",
                 data:{id:id},
                 success: function(result){
                      $("#hosue_no").html(result);
@@ -79,7 +80,7 @@ function gethouseno(id)
        
          $.ajax({
                 type: "GET",
-                url: "receipt/getdataforhousemember",
+                url: $('#base_url').val()+"receipt/getdataforhousemember",
                 data:{owner_id:owner_id},
                 success: function(result){
                      var data=jQuery.parseJSON(result);

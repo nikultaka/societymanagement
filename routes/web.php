@@ -109,7 +109,7 @@ Route::any('document/delete/','DocumentController@deletedocument');
 // Report Managment
 Route::any('report','ReportController@index');
 Route::any('report/getdata','ReportController@anyData')->name('report/getdata');
-
+    
 //search Record
 Route::get('search_record','SearchController@index');
 Route::get('search/getdatafordropdown','SearchController@getdatafordropdown');

@@ -2,7 +2,7 @@ var table= jQuery('.member-table').DataTable({
                     responsive: true,
                     processing: true,
                     serverSide: true,
-                    ajax: 'member/getdata',
+                    ajax: $('#base_url').val()+'member/getdata',
                     columns: [
                         { data: 'id', name: 'id'},
                         { data: 'member_first_name', name: 'member_first_name'},
@@ -70,7 +70,7 @@ $(document).ready(function() {
                 if(count_error == 0){
                     
                     $.ajax({
-                    url: "/member",
+                    url: $('#base_url').val()+"member",
                     type:'POST',
                     data: {_token:_token, txt_fname:txt_fname, txt_mname:txt_mname, txt_lname:txt_lname, email:email, number:number},
                     success: function(data) {
@@ -136,7 +136,7 @@ $(document).ready(function() {
                 if(count_error == 0){
                     
                     $.ajax({
-                    url: "/member/update",
+                    url: $('#base_url').val()+"member/update",
                     type:'POST',
                     data: {_token:_token,member_id:member_id, txt_fname:txt_fname, txt_mname:txt_mname, txt_lname:txt_lname, email:email, number:number},
                     success: function(data) {
@@ -162,7 +162,7 @@ function refreshJsMember(){
         var member_id = $(this).data('id'); 
         var _token = $("input[name='_token']").val();
         $.ajax({
-            url: "/member/edit",
+            url: $('#base_url').val()+"member/edit",
             type:'POST',
             data: {_token:_token, member_id:member_id},
             success: function(data) {
@@ -200,7 +200,7 @@ function delete_member(id){
     if (confirm('Are You Sure For Delete The Member..!! ')) {
         var _token = $("input[name='_token']").val();
              $.ajax({
-                    url: "/member/delete",
+                    url: $('#base_url').val()+"member/delete",
                     type:'POST',
                     data: {_token:_token, id:id},
                     success: function(data) {
