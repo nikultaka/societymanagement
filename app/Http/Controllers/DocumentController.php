@@ -11,7 +11,10 @@ use Illuminate\Support\Facades\DB;
 
 class DocumentController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         
         $data_result=array();
@@ -89,7 +92,6 @@ class DocumentController extends Controller
     
     public function deletedocument(){
         $id=$_POST['id'];
-        echo $id; exit;
         if(isset($id) && $id !=''){
             DB::table('document_detail')
                     ->where('id', $id)

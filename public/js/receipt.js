@@ -50,21 +50,21 @@ $(document).ready(function() {
 //                alert("please select member block");
 //            }
 //            }); 
-//            function printErrorMsg (msg) {
-//                        $(".print-error-msg").find("ul").html('');
-//                        $(".print-error-msg").css('display','block');
-//                        $.each( msg, function( key, value ) {
-//                                $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
-//                        });
-//
-//		}
-//                function printSuccessMsg (msg) {
-//                        $(".print-error-msg").find("ul").html('');
-//                        $(".print-error-msg").css('display','block');
-//                        $(".print-error-msg").find("ul").append('<li>'+msg+'</li>');
-//                    }
-                   
 	});
+            function printErrorMsg (msg) {
+                        $(".print-error-msg").find("ul").html('');
+                        $(".print-error-msg").css('display','block');
+                        $.each( msg, function( key, value ) {
+                                $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+                        });
+
+		}
+                function printSuccessMsg (msg) {
+                        $(".print-error-msg").find("ul").html('');
+                        $(".print-error-msg").css('display','block');
+                        $(".print-error-msg").find("ul").append('<li>'+msg+'</li>');
+                    }
+                   
 
 
 function gethouseno(id)
@@ -106,8 +106,16 @@ function gethouseno(id)
                    type:'post',
                    data:$('#myForm').serialize(),
                    success: function (data) {
+                        if($.isEmptyObject(data.error)){
+                                printSuccessMsg(data.success);
+                                table.ajax.reload();
+                                $('#myForm')[0].reset();
+                                $("#hosue_no").hide();
+                        }else{
+                                printErrorMsg(data.error);
+                        }
                 
-            }
+                }
                });
           });  
  $(function() {

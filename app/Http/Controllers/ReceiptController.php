@@ -75,7 +75,7 @@ class ReceiptController extends Controller
                 return response()->json(['success'=>'Added new records.']);
                 }
             return response()->json(['error'=>$validator->errors()->all()]);  
-        
+
         }
         public function getdatafordropdown(){
             
@@ -134,8 +134,8 @@ class ReceiptController extends Controller
                 
                 $house_management_id = $_POST['house_managment_id'];  
                 $charges_id = $_POST['charges_type'];
-                $first_second = date('01-'.$current_month.'-Y');
-                $last_second  = date('t-'.$current_month.'-Y'); // A leap year
+                $first_second = date($current_month.'-01-Y');
+                $last_second  = date($current_month.'-t-Y'); // A leap year
                 $payment_type = $_POST['payment_type'];  
                 
                 
@@ -146,7 +146,6 @@ class ReceiptController extends Controller
                 $data_insert['end_date']=$last_second;
                 $data_insert['payment_type']=$payment_type;
                 $data_insert['status']=1;
-                
                 Receipt::insert($data_insert);
 
                 return response()->json(['success'=>'Added new records.']);

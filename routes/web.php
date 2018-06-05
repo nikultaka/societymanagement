@@ -95,10 +95,12 @@ Route::get('transfer', 'TransferController@index');
 Route::post('transfer', 'TransferController@savenewhouse');
 //Route::get('receipt/getdata', 'ReceiptController@anyData')->name('receipt/getdata');
 
-// Report Managment
-Route::any('report', 'ReportController@index');
 
 Route::get('document','DocumentController@index');
 Route::get('document/getdata','DocumentController@anyData')->name('document/getdata');
 Route::post('document','DocumentController@adddocument');
 Route::any('document/delete/','DocumentController@deletedocument');
+
+// Report Managment
+Route::any('report','ReportController@index');
+Route::any('report/getdata','ReportController@anyData')->name('report/getdata');
