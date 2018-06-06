@@ -46,15 +46,36 @@ class SearchController extends Controller
         if($_POST){
             $block_id=$_POST['block_list'];
             $house_id=$_POST['house_no'];
+            $month_id=$_POST['select_month'];
+            
+            $dateToTest = date("Y-".$month_id."-01");
+            $lastday = date('t',strtotime($dateToTest));
+            
+            $first_date = date($month_id.'-01-Y');
+            $last_date  = date($month_id.'-'.$lastday.'-Y');
+             
+            if(isset($month_id) && $month_id > '0'){
+                echo "dssa";exit;
+            $receipt= DB::table('house_receipts')
+                    ->select('*')
+                    ->where('start_date','=',$first_date and 'end_date','=',$last_date and 'status','=',0)
+                    ->get();
+            }
+            
+            
+            
+            
+            else{
            $receipt= DB::table('house_receipts')
                    ->where(function ($param) use ($house_id) {
                        return $param->where('house_receipts.house_managment_id','=',$house_id)
                                ->where('house_receipts.status','=',0);
             })
                    ->get();
+            }
            echo '<pre>';
            print_r($receipt);
-           die;
+//           die;
         }
     }
 }

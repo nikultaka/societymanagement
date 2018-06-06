@@ -1,42 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group name="htdocs"/>
-        <group>
-            <file>file:/C:/xampp/htdocs/societymanagement/app/Http/Controllers/ReportController.php</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/include/sidebar.blade.php</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/dashboard.blade.php</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/public/js/receipt.js</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/app/Http/Controllers/ReceiptController.php</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/routes/web.php</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/receipt/receipt_add.blade.php</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/receipt/receipt_list.blade.php</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/app/Http/Controllers/TransferController.php</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/app/Http/Controllers/DocumentController.php</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/app/Models/Member.php</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/app/Models/Receipt.php</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/app/Http/Controllers/MemberController.php</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/member/member_list.blade.php</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/public/js/report.js</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/member/member_add.blade.php</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/public/js/member.js</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/public/js/document.js</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/document/doc_add.blade.php</file>
-            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/document/doc_list.blade.php</file>
-=======
-        <group name="htdocs">
-            <file>file:/C:/wamp/www/society2/routes/web.php</file>
-            <file>file:/C:/wamp/www/society2/resources/views/BackEnd/include/sidebar.blade.php</file>
-            <file>file:/C:/wamp/www/society2/resources/views/BackEnd/search/index.blade.php</file>
-            <file>file:/C:/wamp/www/society2/app/Http/Controllers/ReceiptController.php</file>
-            <file>file:/C:/wamp/www/society2/public/js/search.js</file>
-            <file>file:/C:/wamp/www/society2/resources/views/BackEnd/transfer/transfer_add.blade.php</file>
-            <file>file:/C:/wamp/www/society2/resources/views/BackEnd/charges/charges_add.blade.php</file>
-            <file>file:/C:/wamp/www/society2/app/Http/Controllers/SearchController.php</file>
-            <file>file:/C:/wamp/www/society2/resources/views/BackEnd/receipt/receipt_add.blade.php</file>
->>>>>>> ab31151a31f5f60ff057c173045189d0a764569c
-        </group>
+        <group/>
     </open-files>
 </project-private>
