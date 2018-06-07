@@ -22,14 +22,66 @@ $(document).ready(function() {
             $(".add-transfer").click(function(e){
                
                 e.preventDefault();
+                var count_error = 0;
                 var demo = document.getElementById("block_list");
                 var block_id = demo.options[demo.selectedIndex].value;
+                
+                
+                if (block_id == 0) {
+                    $("select[name='block_list']").addClass('has-error');
+                    count_error++;  
+                } else{
+                    $("select[name='block_list']").removeClass('has-error');
+//                    return false;
+                }
+                
                 var houase = document.getElementById("house_no");
                 var house_no = houase.options[houase.selectedIndex].id;
+//                var house_no1 = houase.options[houase.selectedIndex].value;
+
+//                alert(block_id);
+                
                 var old_owner_id = $('#owner_id').val();
                 var member_list =document.getElementById("new_member_list");
                 var new_member_id = member_list.options[member_list.selectedIndex].value;
                 var _token = $("input[name='_token']").val();
+              
+              
+                var count_error = 0;
+                if (block_id == 0) {
+                    $("select[name='block_list']").addClass('has-error');
+                    count_error++;
+                } else{
+                     $("select[name='block_list']").removeClass('has-error');
+                }
+//                if (txt_charges_name.trim() == '') {
+//                    $("input[name='txt_charges_name']").addClass('has-error');
+//                    count_error++;
+//                } else{
+//                    $("input[name='txt_charges_name']").removeClass('has-error');
+//                }
+//                if (txt_charges_ammount.trim() == '') {
+//                    $("input[name='txt_charges_ammount']").addClass('has-error');
+//                    count_error++;
+//                } else{
+//                    $("input[name='txt_charges_ammount']").removeClass('has-error');
+//                }
+//                if (description.trim() == '') {
+//                    $("textarea[name='description']").addClass('has-error');
+//                    count_error++;
+//                } else{
+//                    $("textarea[name='description']").removeClass('has-error');
+//                }
+                
+//                if(count_error == 0){
+//                    
+//                }
+//              
+              
+              
+              
+              
+              
               
                
                 $.ajax({

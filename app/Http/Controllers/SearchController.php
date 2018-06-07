@@ -55,15 +55,16 @@ class SearchController extends Controller
             $last_date  = date($month_id.'-'.$lastday.'-Y');
              
             if(isset($month_id) && $month_id > '0'){
-                echo "dssa";exit;
             $receipt= DB::table('house_receipts')
-                    ->select('*')
-                    ->where('start_date','=',$first_date and 'end_date','=',$last_date and 'status','=',0)
+                    ->where('start_date','=',$first_date)
+                    ->where('end_date','=',$last_date)
+                    ->where('house_managment_id','=',$house_id)
+                    ->where('status','=',0)
                     ->get();
+            
+                    
+            
             }
-            
-            
-            
             
             else{
            $receipt= DB::table('house_receipts')
@@ -73,9 +74,14 @@ class SearchController extends Controller
             })
                    ->get();
             }
-           echo '<pre>';
-           print_r($receipt);
-//           die;
+
+
+//            echo json_encode($receipt);
+            return Datatables::of($receipt)
+                    ->make(true);
+//            
+            
+            
         }
     }
 }

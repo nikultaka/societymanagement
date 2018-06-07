@@ -1,3 +1,9 @@
+<style>
+    .has-error{
+        border: solid 1px red !important;
+    }
+</style>
+
 <form id="myForm">
 
 		{{ csrf_field() }}

@@ -121,7 +121,8 @@ function gethouseno(id)
               $('#house_managment_id').val(house_id);
         
                e.preventDefault();
-               $.ajax({
+      
+                $.ajax({
                    url:$('#base_url').val()+'receipt/add_receipt_single',
                    type:'post',
                    data:$('#myForm').serialize(),
@@ -137,6 +138,8 @@ function gethouseno(id)
                 
                 }
                });
+               
+               
           });
 function getchargestype(block_id){
     if(block_id>0){

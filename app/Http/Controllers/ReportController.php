@@ -21,7 +21,7 @@ class ReportController extends Controller
       
     }
     
-    public function anyData()
+    public function anyData()   
         {
 //        echo "dffsd";
         print_r($_GET);exit;

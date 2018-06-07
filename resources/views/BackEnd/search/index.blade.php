@@ -62,14 +62,34 @@
                 </div>
                   </div>
             <div class="form-actions">
-              <button type="submit" class="btn btn-success search-details">Save</button>
+              <button type="submit" class="btn btn-success search-details">Search</button>
             </div>
           </form>
         </div>
       </div>
      
-    </div>
     
+          <table class="table table-bordered table-striped with-check search_list ">
+              <thead>
+                <tr>
+                  
+                  <th>Id</th>
+                  <th>House Id</th>
+                  <th>Charges Id</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>End Date</th>
+                  <th>End Date</th>
+                  <th>Date created</th>  
+                </tr>
+              </thead>
+              <tbody>
+               
+              </tbody>
+            </table>
+          
+      </div>
+     
   </div>
   
 </div>

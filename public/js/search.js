@@ -1,19 +1,3 @@
-var table= jQuery('.receipt_list').DataTable({
-                    responsive: true,
-                    processing: true,
-                    serverSide: true,
-                    ajax: $('#base_url').val()+'receipt/getdata',
-                    columns: [
-                        { data: 'id', name: 'id'},
-                        { data: 'block', name: 'block'},
-                        { data: 'house_no', name: 'house_no'},
-                        { data: 'membername', name: 'membername'},
-                        { data: 'charges_name', name: 'charges_name'},
-                        { data: 'start_date', name: 'start_date'},
-                        { data: 'status', name: 'status'},
-                        {data: 'action', name: 'action', orderable: false, searchable: false},
-                            ]
-    });  
 
 function gethouseno(id)
     {
@@ -34,6 +18,28 @@ $('.search-details').on('click',function (){
                 url: $('#base_url').val()+"search/search_record",
                 data:$('#search_form').serialize(),
                 success: function(result){
+                    var data = $.parseJSON(result);
+                    alert(result);
+
+                var table= jQuery('.search_list').DataTable({
+                    responsive: true,
+                    processing: true,
+                    serverSide: true,
+                    ajax: $('#base_url').val()+'search/search_record',
+                    columns: [
+                        { data: 'id', name: 'id'},
+                        { data: 'house_managment_id', name: 'house_managment_id'},
+                        { data: 'charges_id', name: 'charges_id'},
+                        { data: 'start_date', name: 'start_date'},
+                        { data: 'end_date', name: 'end_date'},
+                        { data: 'payment_type', name: 'payment_type'},
+                        { data: 'status', name: 'status'},
+                        { data: 'gm_created', name: 'gm_created'},
+                            ]
+                    });
+
+                    
+                    
                     
                     }
                 });

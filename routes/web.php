@@ -114,5 +114,7 @@ Route::any('report/getdata','ReportController@anyData')->name('report/getdata');
 Route::get('search_record','SearchController@index');
 Route::get('search/getdatafordropdown','SearchController@getdatafordropdown');
 Route::post('search/search_record','SearchController@search_record');
+Route::post('search/search_record','SearchController@search_record');
+
 
 
