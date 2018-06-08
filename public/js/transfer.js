@@ -1,5 +1,5 @@
 var table= jQuery('.trasfer-member-list').DataTable({
-                     order: [ [0, 'desc'] ],
+                    order: [ [0, 'desc'] ],
                     responsive: true,
                     processing: true,
                     serverSide: true,
@@ -15,6 +15,7 @@ var table= jQuery('.trasfer-member-list').DataTable({
                             ]
     });  
 $(document).ready(function() {
+            $("#charges_type").hide();
           // table.ajax.reload();
            //var date = new Date();
           
@@ -37,68 +38,87 @@ $(document).ready(function() {
                 
                 var houase = document.getElementById("house_no");
                 var house_no = houase.options[houase.selectedIndex].id;
-//                var house_no1 = houase.options[houase.selectedIndex].value;
+                var house_val = houase.options[houase.selectedIndex].value;
 
-//                alert(block_id);
+                if(house_val == ""){
+                    $("select[name='house_no']").addClass('has-error');
+                    count_error++;  
+                }
+                else{
+                    $("select[name='house_no']").removeClass('has-error');
+                }
                 
+
                 var old_owner_id = $('#owner_id').val();
                 var member_list =document.getElementById("new_member_list");
-                var new_member_id = member_list.options[member_list.selectedIndex].value;
+                var new_member_list = member_list.options[member_list.selectedIndex].value;
+                
+                if(new_member_list == ""){
+                    $("#new_member_list").attr('class','has-error');
+                    count_error++;  
+                }
+                else{
+                    $("#new_member_list").removeAttr('class','has-error');
+                }
+                
                 var _token = $("input[name='_token']").val();
+                
+                var txt_fname = $("input[name='txt_fname']").val();
+                var txt_mname = $("input[name='txt_mname']").val();
+                var txt_lname = $("input[name='txt_lname']").val();
+                var email = $("input[name='email']").val();
+                var number = $("input[name='number']").val();
               
               
-                var count_error = 0;
-                if (block_id == 0) {
-                    $("select[name='block_list']").addClass('has-error');
+                if (txt_fname.trim() == '') {
+                    $("input[name='txt_fname']").addClass('has-error');
                     count_error++;
                 } else{
-                     $("select[name='block_list']").removeClass('has-error');
+                    $("input[name='txt_fname']").removeClass('has-error');
                 }
-//                if (txt_charges_name.trim() == '') {
-//                    $("input[name='txt_charges_name']").addClass('has-error');
-//                    count_error++;
-//                } else{
-//                    $("input[name='txt_charges_name']").removeClass('has-error');
-//                }
-//                if (txt_charges_ammount.trim() == '') {
-//                    $("input[name='txt_charges_ammount']").addClass('has-error');
-//                    count_error++;
-//                } else{
-//                    $("input[name='txt_charges_ammount']").removeClass('has-error');
-//                }
-//                if (description.trim() == '') {
-//                    $("textarea[name='description']").addClass('has-error');
-//                    count_error++;
-//                } else{
-//                    $("textarea[name='description']").removeClass('has-error');
-//                }
+                if (txt_mname.trim() == '') {
+                    $("input[name='txt_mname']").addClass('has-error');
+                    count_error++;
+                } else{
+                    $("input[name='txt_mname']").removeClass('has-error');
+                }
+                if (txt_lname.trim() == '') {
+                    $("input[name='txt_lname']").addClass('has-error');
+                    count_error++;
+                } else{
+                    $("input[name='txt_lname']").removeClass('has-error');
+                }
+                if (email.trim() == '') {
+                    $("input[name='email']").addClass('has-error');
+                    count_error++;
+                } else{
+                    $("input[name='email']").removeClass('has-error');
+                }
+                if (number.trim() == '') {
+                    $("input[name='number']").addClass('has-error');
+                    count_error++;
+                } else{
+                    $("input[name='number']").removeClass('has-error');
+                }
                 
-//                if(count_error == 0){
-//                    
-//                }
-//              
-              
-              
-              
-              
-              
-              
-               
-                $.ajax({
-                    url: $('#base_url').val()+"transfer",
-                    type:'POST',
-                    data: {_token:_token, block_id:block_id, house_no:house_no, old_owner_id:old_owner_id, new_member_id:new_member_id},
-                    success: function(data) {
-                        if($.isEmptyObject(data.error)){
-                                printSuccessMsg(data.success);
-                                table.ajax.reload();
-                                $('#myForm')[0].reset();
-                        }else{
-                                printErrorMsg(data.error);
+                if(count_error == 0){
+                    
+                
+                    $.ajax({
+                        url: $('#base_url').val()+"transfer",
+                        type:'POST',
+                        data: {_token:_token, block_id:block_id, house_no:house_no, old_owner_id:old_owner_id, new_member_id:new_member_id},
+                        success: function(data) {
+                            if($.isEmptyObject(data.error)){
+                                    printSuccessMsg(data.success);
+                                    table.ajax.reload();
+                                    $('#myForm')[0].reset();
+                            }else{
+                                    printErrorMsg(data.error);
+                            }
                         }
-                    }
-                });
-           
+                    });
+                }
             }); 
             function printErrorMsg (msg) {
                         $(".print-error-msg").find("ul").html('');
@@ -124,6 +144,7 @@ function gethouseno(id)
                 url: $('#base_url').val()+"receipt/getdatafordropdown",
                 data:{id:id},
                 success: function(result){
+                    
                      $("#hosue_no").html(result);
                     }
                 });
@@ -148,5 +169,4 @@ function gethouseno(id)
                      }
                     }
                 });
-        
     }

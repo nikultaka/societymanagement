@@ -2,6 +2,21 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/maintenes.blade.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/login.blade.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/public/js/transfer.js</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/charges/charges_add.blade.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/public/js/charges.js</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/app/Http/Controllers/SearchController.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/app/Http/Controllers/TransferController.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/dashboard.blade.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/search/index.blade.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/public/js/report.js</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/transfer/transfer_add.blade.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/public/js/search.js</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/routes/web.php</file>
+            <file>file:/C:/xampp/htdocs/societymanagement/resources/views/BackEnd/charges/charges_list.blade.php</file>
+        </group>
     </open-files>
 </project-private>

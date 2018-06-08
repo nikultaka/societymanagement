@@ -18,8 +18,7 @@ $('.search-details').on('click',function (){
                 url: $('#base_url').val()+"search/search_record",
                 data:$('#search_form').serialize(),
                 success: function(result){
-                    var data = $.parseJSON(result);
-                    alert(result);
+                var data = $.parseJSON(result);
 
                 var table= jQuery('.search_list').DataTable({
                     responsive: true,
