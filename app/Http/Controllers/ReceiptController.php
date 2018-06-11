@@ -31,7 +31,7 @@ class ReceiptController extends Controller
           $members=DB::table('house_receipts')
                     ->join('house_managment', 'house_receipts.house_managment_id', '=', 'house_managment.id')
                     ->join('block', 'house_managment.house_block_id', '=', 'block.id')
-                    ->join('charges_list', 'block.id', '=', 'charges_list.block_id')
+                    ->join('charges_list', 'charges_list.id', '=', 'house_receipts.charges_id')
                     ->join('member_list', 'house_managment.owner_id', '=', 'member_list.id')
                     ->select('charges_list.charges_name','house_receipts.id','house_receipts.status','house_receipts.start_date', 'house_managment.house_no','block.block_name as block',DB::raw('CONCAT(member_list.member_first_name," ",member_list.member_middle_name," ",member_list.member_last_name) as membername'))
                     ->get();
@@ -181,7 +181,7 @@ class ReceiptController extends Controller
         return $data;
     }
     public function auto_receipt(){
-        $block_id=$_POST['block_list'];
+        $block_id=$_POST['block_list_for_auto'];
         $charges_type=$_POST['charges_type'];
         $data= DB::table('house_managment')
                 ->where('house_managment.house_block_id','=',$block_id)
@@ -196,6 +196,7 @@ class ReceiptController extends Controller
                 
                 ->select('house_managment.id', 'charges_list.id as charge_id')
                 ->get();
+                    
       $first_day_this_month = date('m-01-Y');
       $last_day_this_month  = date('m-t-Y');
       foreach ($data as $key=>$value){

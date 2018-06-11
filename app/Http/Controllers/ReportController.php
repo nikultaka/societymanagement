@@ -21,10 +21,10 @@ class ReportController extends Controller
       
     }
     
-    public function anyData()
+    public function anyData()   
         {
 //        echo "dffsd";
-        print_r($_GET);exit;
+//        print_r($_GET);exit;
         $start_date = $_GET['start_date'];
         $end_date = $_GET['end_date'];
         $report = DB::table('house_receipts')

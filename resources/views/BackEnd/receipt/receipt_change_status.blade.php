@@ -2,7 +2,7 @@
 <form id="payment_submitForm">
 
 		{{ csrf_field() }}
-<div id="Change_status_popup" class="modal fade" role="dialog" style="z-index: 1600;">
+                <div id="Change_status_popup" class="modal fade" role="dialog" tabindex="-1" style="display: none;">
   <div class="modal-dialog" role="document">
 <div class="modal-content">
 <div class="modal-header">

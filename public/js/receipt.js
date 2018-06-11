@@ -34,43 +34,8 @@ $(document).ready(function() {
      
              }
         });
- })
-           //var date = new Date();
-          
-          
-//            $(".add-member").click(function(e){
-//                
-//                e.preventDefault();
-//                var demo = document.getElementById("block_list");
-//                var block_id = demo.options[demo.selectedIndex].value;
-//                
-//                var _token = $("input[name='_token']").val();
-//                var txt_fname = $("input[name='txt_fname']").val();
-//                var txt_mname = $("input[name='txt_mname']").val();
-//                var txt_lname = $("input[name='txt_lname']").val();
-//                var email = $("input[name='email']").val();
-//                var number = $("input[name='number']").val();
-//                if(block_id > 0){
-//                $.ajax({
-//                    url: "/member",
-//                    type:'POST',
-//                    data: {_token:_token, block_id:block_id, txt_fname:txt_fname, txt_mname:txt_mname, txt_lname:txt_lname, email:email, number:number},
-//                    success: function(data) {
-//                        if($.isEmptyObject(data.error)){
-//                                printSuccessMsg(data.success);
-//                                table.ajax.reload();
-//                                $('#myForm')[0].reset();
-//                        }else{
-//                                printErrorMsg(data.error);
-//                        }
-//                    }
-//                });
-//            }
-//            else{
-//                alert("please select member block");
-//            }
-//            }); 
-	});
+     })
+});
             function printErrorMsg (msg) {
                         $(".print-error-msg").find("ul").html('');
                         $(".print-error-msg").css('display','block');
@@ -121,7 +86,8 @@ function gethouseno(id)
               $('#house_managment_id').val(house_id);
         
                e.preventDefault();
-               $.ajax({
+      
+                $.ajax({
                    url:$('#base_url').val()+'receipt/add_receipt_single',
                    type:'post',
                    data:$('#myForm').serialize(),
@@ -137,6 +103,8 @@ function gethouseno(id)
                 
                 }
                });
+               
+               
           });
 function getchargestype(block_id){
     if(block_id>0){
@@ -155,20 +123,27 @@ function getchargestype(block_id){
     }
 }
 $('.apply-charges-by-block').on('click',function (){
-    var block_id=$('#block_list').val();
+    var block_id=$('#block_list_for_auto').val();
     var charge_type=$('#charges_type').val();
     var error_count=0;
+    
     if(block_id==0){
+        alert('please select block');
+        return false; 
         
-    }
+    }else{
                 $.ajax({
                    url:$('#base_url').val()+'receipt/auto_receipt',
                    type:'post',
                    data:$('#myautoreceiptForm').serialize(),
                    success: function (data) {
-                       alert('Record Add Successfully..!')
+                       alert('Record Add Successfully..!');
+                        table.ajax.reload();
+                        $('#myautoreceiptForm')[0].reset();
+                        $('#myreceiptautogenrate').hide();
                     }
                });
+           }
 })
 
  function change_payment_status(id){

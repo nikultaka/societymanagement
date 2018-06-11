@@ -2,7 +2,7 @@
 <form id="myautoreceiptForm">
 
 		{{ csrf_field() }}
-<div id="myreceiptautogenrate" class="modal fade" role="dialog" style="z-index: 1600;">
+                <div id="myreceiptautogenrate" class="modal fade" tabindex="-1" role="dialog" style="display: none;">
   <div class="modal-dialog" role="document">
 <div class="modal-content">
 <div class="modal-header">
@@ -17,7 +17,7 @@
   <div class="modal-body">
         <div class="control-group">
             <label class="control-label">Select Member Block</label>
-            <select name="block_list" id="block_list" onchange="getchargestype(this.value);">
+            <select name="block_list_for_auto" id="block_list_for_auto" onchange="getchargestype(this.value);">
                 <option value="0">---Select Member Block---</option>
                  @if($block_list->count() > 0)
                 @foreach($block_list as $block)
