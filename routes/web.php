@@ -108,7 +108,9 @@ Route::any('document/delete/','DocumentController@deletedocument');
 
 // Report Managment
 Route::any('report','ReportController@index');
-Route::any('report/getdata','ReportController@anyData')->name('report/getdata');
+Route::any('report/getdata','ReportController@anyData');
+Route::any('receiptreport','ReportController@receiptreportindex');
+Route::any('report/receiptgetdata','ReportController@receiptgetdata');
     
 //search Record
 Route::get('search_record','SearchController@index');

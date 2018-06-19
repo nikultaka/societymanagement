@@ -10,7 +10,7 @@
     </li>
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Receipt Management</span></a>
       <ul>
-        <li><a href="payment">Payment List</a></li>
+<!--        <li><a href="payment">Payment List</a></li>-->
         <li><a href="charges">Charges List</a></li>
         <li><a href="receipt">Receipt List</a></li>
        
@@ -22,7 +22,13 @@
       </ul>
     </li>
     <li><a href="transfer"><i class="icon icon-tint"></i> <span>Transfer Member</span></a></li>
-     <li><a href="report"><i class="icon icon-tint"></i> <span>Report</span></a></li>
+<!--     <li><a href="report"><i class="icon icon-tint"></i> <span>Report</span></a></li>-->
+     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Report</span> </a>
+      <ul>
+        <li><a href="report">Expenses Report</a></li>
+        <li><a href="receiptreport">Income Report</a></li>
+      </ul>
+    </li>
      <li><a href="search_record"><i class="icon icon-tint"></i> <span>Receipt Check</span></a></li>
     <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Document Upload</span> </a>
       <ul>

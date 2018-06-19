@@ -8,6 +8,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.18/api/sum().js"></script>
+
 <style>
     .has-error{
         border: 1px solid red !important;
@@ -27,11 +29,7 @@
         <div class="input-group date form-group" >
         <b> Record List </b> <input data-provide="datepicker" name="start_date" id="start_date"> <b> To </b>
             <input data-provide="datepicker" name="end_date" id="end_date">
-            <select name='report_type' id="report_type">
-                  <option value="1">Expenses</option>
-              </select>
-        
-            <button type="button" class="btn btn-info btn-lg btnGetReportForBalance">Submit</button>
+            <button type="button" class="btn btn-info btn-lg btnGetReportForIncomeBalance">Submit</button>
         </div>
         </form>
         
@@ -40,16 +38,20 @@
             
           <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
             <h5>Report Detail List Here </h5>
-            <table class="table table-bordered table-striped with-check search_list ">
+            <table class="table table-bordered table-striped with-check Incomesearch_list">
               <thead>
                 <tr>
                   
                   <th>Id</th>
-                  <th>Expense Name</th>
-                  <th>Amount</th>
-                  <th>Payer Name</th>
-                  <th>Date</th>
-                  
+                  <th>House Name</th>
+                  <th>Charges</th>
+                  <th>Charges Amount</th>
+                  <th>Member Name</th>
+                  <th>Member SurName</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>status</th>
+                  <th>Date created</th>  
                 </tr>
               </thead>
               <tbody>
@@ -58,13 +60,19 @@
               <tfoot>
             <tr>
                 <th></th>
+                <th></th>
                 <th>Total:</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
             </tr>
         </tfoot>
             </table>
+          
           </div>
 
         </div>

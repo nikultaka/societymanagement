@@ -1,134 +1,186 @@
-//var table= jQuery('.receipt_list').DataTable({
-//                    responsive: true,
-//                    processing: true,
-//                    serverSide: true,
-//                    ajax: 'receipt/getdata',
-//                    columns: [
-//                        { data: 'id', name: 'id'},
-//                        { data: 'block', name: 'block'},
-//                        { data: 'house_no', name: 'house_no'},
-//                        { data: 'membername', name: 'membername'},
-//                        { data: 'start_date', name: 'start_date'},
-//                        { data: 'status', name: 'status'},
-//                        {data: 'action', name: 'action', orderable: false, searchable: false},
-//                            ]
-//    });  
-$(document).ready(function() {
-//           table.ajax.reload();
-            $("#report_list").click(function(e){
-                
-                e.preventDefault();
-                
-                var _token = $("input[name='_token']").val();
-                var start_date = $("input[name='start_date']").val(); 
-                var end_date = $("input[name='end_date']").val(); 
-                
-                $.ajax({
-                    url: "report/getdata",
-                    type: 'GET',
-                    data : {_token:_token, start_date:start_date, end_date:end_date},
-                    success : function (data){
+var table= jQuery('.search_list').DataTable({
+                    data:[],
+                    columns: [
+                        { data: 'id', name: 'id'},
+                        { data: 'expense_name', name: 'expense_name'},
+                        { data: 'ammount', name: 'ammount'},
+                        { data: 'vender_name', name: 'vender_name'},
+                        { data: 'payment_date', name: 'payment_date'},
                         
-                    }
-                    
-                });
-                
-            });
-           //var date = new Date();
-          
-          
-//            $(".add-member").click(function(e){
-//                
-//                e.preventDefault();
-//                var demo = document.getElementById("block_list");
-//                var block_id = demo.options[demo.selectedIndex].value;
-//                
-//                var _token = $("input[name='_token']").val();
-//                var txt_fname = $("input[name='txt_fname']").val();
-//                var txt_mname = $("input[name='txt_mname']").val();
-//                var txt_lname = $("input[name='txt_lname']").val();
-//                var email = $("input[name='email']").val();
-//                var number = $("input[name='number']").val();
-//                if(block_id > 0){
-//                $.ajax({
-//                    url: "/member",
-//                    type:'POST',
-//                    data: {_token:_token, block_id:block_id, txt_fname:txt_fname, txt_mname:txt_mname, txt_lname:txt_lname, email:email, number:number},
-//                    success: function(data) {
-//                        if($.isEmptyObject(data.error)){
-//                                printSuccessMsg(data.success);
-//                                table.ajax.reload();
-//                                $('#myForm')[0].reset();
-//                        }else{
-//                                printErrorMsg(data.error);
-//                        }
-//                    }
-//                });
-//            }
-//            else{
-//                alert("please select member block");
-//            }
-//            }); 
-//            function printErrorMsg (msg) {
-//                        $(".print-error-msg").find("ul").html('');
-//                        $(".print-error-msg").css('display','block');
-//                        $.each( msg, function( key, value ) {
-//                                $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
-//                        });
-//
-//		}
-//                function printSuccessMsg (msg) {
-//                        $(".print-error-msg").find("ul").html('');
-//                        $(".print-error-msg").css('display','block');
-//                        $(".print-error-msg").find("ul").append('<li>'+msg+'</li>');
-//                    }
+                            ],
+                      dom: 'Bfrtip',
+                      buttons: [
+                                    { extend: 'copyHtml5', footer: true },
+                                    { extend: 'excelHtml5', footer: true },
+                                    { extend: 'csvHtml5', footer: true },
+                                    { extend: 'pdfHtml5', footer: true }
+                                ],
+                    "footerCallback": function ( row, data, start, end, display ) {
+                        var api = this.api(), data;
+ 
+                        // Remove the formatting to get integer data for summation
+                        var intVal = function ( i ) {
+                            return typeof i === 'string' ?
+                                i.replace(/[\$,]/g, '')*1 :
+                                typeof i === 'number' ?
+                                    i : 0;
+                        };
+
+                        // Total over all pages
+                        total = api
+                            .column( 2 )
+                            .data()
+                            .reduce( function (a, b) {
+                                return intVal(a) + intVal(b);
+                            }, 0 );
+
+                        // Total over this page
+//                        pageTotal = api
+//                            .column( 3, { page: 'current'} )
+//                            .data()
+//                            .reduce( function (a, b) {
+//                                return intVal(a) + intVal(b);
+//                            }, 0 );
+
+                        // Update footer
+                        $( api.column( 2 ).footer() ).html(
+                             total 
+                        );
+                    },            
+                    rowCallback: function (row, data) {},
+                    filter: false,
+                    info: false,
+                    ordering: false,
+                    processing: true,
+                    retrieve: true        
+                    });
+
+var incometable= jQuery('.Incomesearch_list').DataTable({
+                    data:[],
+                    columns: [
+                        { data: 'id', name: 'id'},
+                        { data: 'house_no', name: 'house_no'},
+                        { data: 'charges_name', name: 'charges_name'},
+                        { data: 'charges_ammount', name: 'charges_ammount'},
+                        { data: 'member_first_name', name: 'member_first_name'},
+                        { data: 'member_last_name', name: 'member_last_name'},
+                        { data: 'start_date', name: 'start_date'},
+                        { data: 'end_date', name: 'end_date'},
+                        { data: 'status', name: 'status'},
+                        { data: 'gm_created', name: 'gm_created'},
+                        
+                            ],
+                      dom: 'Bfrtip',
+                       buttons: [
+                                    { extend: 'copyHtml5', footer: true },
+                                    { extend: 'excelHtml5', footer: true },
+                                    { extend: 'csvHtml5', footer: true },
+                                    { extend: 'pdfHtml5', footer: true }
+                                ],
+                    "footerCallback": function ( row, data, start, end, display ) {
+                        var api = this.api(), data;
+ 
+                        // Remove the formatting to get integer data for summation
+                        var intVal = function ( i ) {
+                            return typeof i === 'string' ?
+                                i.replace(/[\$,]/g, '')*1 :
+                                typeof i === 'number' ?
+                                    i : 0;
+                        };
+
+                        // Total over all pages
+                        total = api
+                            .column( 3 )
+                            .data()
+                            .reduce( function (a, b) {
+                                return intVal(a) + intVal(b);
+                            }, 0 );
+
+                        // Total over this page
+//                        pageTotal = api
+//                            .column( 3, { page: 'current'} )
+//                            .data()
+//                            .reduce( function (a, b) {
+//                                return intVal(a) + intVal(b);
+//                            }, 0 );
+
+                        // Update footer
+                        $( api.column( 3 ).footer() ).html(
+                             total 
+                        );
+                    },        
+                    rowCallback: function (row, data) {},
+                    filter: false,
+                    info: false,
+                    ordering: false,
+                    processing: true,
+                    retrieve: true        
+                    });
+
+$('.btnGetReportForBalance').on('click',function (){
+    var count=0;
+    if($('#start_date').val().trim()==''){
+        $('#start_date').addClass('has-error');
+        count++;
+    }else{
+        $('#start_date').removeClass('has-error');
+    }
+    if($('#end_date').val().trim()==''){
+        $('#end_date').addClass('has-error');
+        count++;
+    }else{
+        $('#end_date').removeClass('has-error');
+    }
+    if(count==0){
+        $.ajax({
+                type: "Post",
+                url: $('#base_url').val()+"report/getdata",
+                data:$('#formForGetBalance').serialize(),
+                }).done(function (result) {
                    
-	});
-
-
-//function gethouseno(id)
-//    {
-//        $.ajax({
-//                type: "GET",
-//                url: "receipt/getdatafordropdown",
-//                data:{id:id},
-//                success: function(result){
-//                     $("#hosue_no").html(result);
-//                    }
-//                });
-//    };
-//    function gethousemember(owner_id){
-//         $.ajax({
-//                type: "GET",
-//                url: "receipt/getdataforhousemember",
-//                data:{owner_id:owner_id},
-//                success: function(result){
-//                     var data=jQuery.parseJSON(result);
-//                     if(data.status==1){
-//                        $('#txt_fname').val(data.content.member_first_name);
-//                        $('#txt_mname').val(data.content.member_middle_name);
-//                        $('#txt_lname').val(data.content.member_last_name);
-//                        $('#email').val(data.content.member_email);
-//                        $('#number').val(data.content.member_contect);
-//                     }
-//                    }
-//                });
-//        
-//    }
-//  $('.add-receipt_single').click(function (e){
-//              var house_id = $('#house_no option:selected').data('id');
-//              $('#house_managment_id').val(house_id);
-//        
-//               e.preventDefault();
-//               $.ajax({
-//                   url:'receipt/add_receipt_single',
-//                   type:'post',
-//                   data:$('#myForm').serialize(),
-//                   success: function (data) {
-//                
-//            }
-//               });
-//          });  
-// $(function() {
-//   $('#start_date').datetimepicker();
-// });
+                table.clear().draw();
+                
+                table.rows.add(result).draw();
+                }).fail(function (jqXHR, textStatus, errorThrown) { 
+               
+            });
+    }
+    else{
+        return false;
+    }
+    
+});
+$('.btnGetReportForIncomeBalance').on('click',function (){
+    var count=0;
+    if($('#start_date').val().trim()==''){
+        $('#start_date').addClass('has-error');
+        count++;
+    }else{
+        $('#start_date').removeClass('has-error');
+    }
+    if($('#end_date').val().trim()==''){
+        $('#end_date').addClass('has-error');
+        count++;
+    }else{
+        $('#end_date').removeClass('has-error');
+    }
+    if(count==0){
+        $.ajax({
+                type: "Post",
+                url: $('#base_url').val()+"report/receiptgetdata",
+                data:$('#formForGetBalance').serialize(),
+                }).done(function (result) {
+                   
+                incometable.clear().draw();
+                
+                incometable.rows.add(result).draw();
+                 incometable.column( 4 ).data().sum();
+                }).fail(function (jqXHR, textStatus, errorThrown) { 
+               
+            });
+    }
+    else{
+        return false;
+    }
+    
+})
