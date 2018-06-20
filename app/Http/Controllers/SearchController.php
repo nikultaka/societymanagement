@@ -56,21 +56,28 @@ class SearchController extends Controller
             $last_date  = date($month_id.'-'.$lastday.'-Y');
              
             if(isset($month_id) && $month_id > '0'){
-            $receipt= DB::table('house_receipts')
-                    ->where('start_date','=',$first_date)
-                    ->where('end_date','=',$last_date)
-                    ->where('house_managment_id','=',$house_id)
-                    ->where('status','=',0)
+            $receipt=DB::table('house_receipts')
+                    ->join('house_managment','house_receipts.house_managment_id','=','house_managment.id')
+                    ->join('member_list','house_managment.owner_id','=','member_list.id')
+                    ->join('charges_list','house_receipts.charges_id','=','charges_list.id')
+                    ->where('house_receipts.start_date','=',$first_date)
+                    ->where('house_receipts.end_date','=',$last_date)
+                    ->where('house_receipts.house_managment_id','=',$house_id)
+                    ->where('house_receipts.status','=',0)
+                    ->select('house_receipts.*','house_managment.house_no','member_list.member_first_name','member_list.member_last_name','charges_list.charges_name','charges_list.charges_ammount')
                     ->get();
+                    
             }
             
             else{
            $receipt= DB::table('house_receipts')
-                   ->where(function ($param) use ($house_id) {
-                       return $param->where('house_receipts.house_managment_id','=',$house_id)
-                               ->where('house_receipts.status','=',0);
-            })
-                   ->get();
+                   ->join('house_managment','house_receipts.house_managment_id','=','house_managment.id')
+                    ->join('member_list','house_managment.owner_id','=','member_list.id')
+                    ->join('charges_list','house_receipts.charges_id','=','charges_list.id')
+                    ->where('house_receipts.house_managment_id','=',$house_id)
+                    ->where('house_receipts.status','=',0)
+                    ->select('house_receipts.*','house_managment.house_no','member_list.member_first_name','member_list.member_last_name','charges_list.charges_name','charges_list.charges_ammount')
+                    ->get();
             }
             
             return $receipt;exit;
